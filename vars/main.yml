@@ -1,0 +1,3 @@
+---
+haproxy_exporter_tgz: "haproxy_exporter-{{ haproxy_exporter_version }}.{{ haproxy_exporter_type }}.tar.gz"
+haproxy_exporter_tgz_url: "https://github.com/prometheus/haproxy_exporter/releases/download/v{{ haproxy_exporter_version }}/{{ haproxy_exporter_tgz }}"

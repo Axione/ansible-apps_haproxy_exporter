@@ -1,0 +1,27 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=Prometheus haproxy Exporter
+After=network-online.target
+StartLimitInterval=0
+
+[Service]
+Type=simple
+Restart=always
+User={{ haproxy_exporter_user }}
+Group={{ haproxy_exporter_group }}
+ExecStart={{ haproxy_exporter_install_dir }}/haproxy_exporter \
+          --web.listen-address=":{{ haproxy_exporter_port }}" \
+          --web.telemetry-path="{{ haproxy_exporter_metrics_path }}" \
+          --haproxy.scrape-uri="{{ haproxy_exporter_scrape_uri }}" \
+          --haproxy.timeout={{ haproxy_exporter_timeout }} \
+          --log.level={{ haproxy_exporter_log_level }} \
+          --log.format={{ haproxy_exporter_log_format }}
+
+ExecReload=/bin/kill -HUP $MAINPID
+SyslogIdentifier=haproxy_exporter
+RestartSec=1
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
