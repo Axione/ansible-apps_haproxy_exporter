@@ -1,5 +1,5 @@
 ---
 - name: "restart haproxy_exporter"
-  service:
+  ansible.builtin.service:
     name: "haproxy_exporter"
     state: "restarted"
