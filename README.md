@@ -22,6 +22,7 @@
 ## Description
 
 Deploy [haproxy_exporter](https://github.com/prometheus/haproxy_exporter) to expose haproxy metrics to prometheus.
+
 ## Requirements
 
 none
